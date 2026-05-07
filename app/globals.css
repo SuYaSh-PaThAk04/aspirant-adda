@@ -1,0 +1,28 @@
+@import "tailwindcss";
+
+/* Theme variables: primary background color for the website */
+:root {
+  --theme-bg: #ffffff;
+  --theme-text: #0f172a; /* default readable text color */
+}
+
+@layer base {
+  html,
+  body,
+  #__next {
+    height: 100%;
+  }
+
+  body {
+    background-color: var(--theme-bg);
+    color: var(--theme-text);
+    font-family: var(--font-epilogue), sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Utility for enforcing theme background where needed */
+  .bg-theme {
+    background-color: var(--theme-bg);
+  }
+}
