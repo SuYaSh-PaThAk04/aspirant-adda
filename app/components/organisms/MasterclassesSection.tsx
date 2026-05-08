@@ -2,8 +2,12 @@
 
 import React, { useEffect } from "react";
 import Image from "next/image";
-import homeFeedImage from "../../assets/Home-feed.svg";
 import homePointerImage from "../../assets/home-pointer.svg";
+import homeFeedScreenImage from "../../assets/mobile-screen/home-feed.jpeg";
+import postScreenImage from "../../assets/mobile-screen/Post.jpeg";
+import quizScreenImage from "../../assets/mobile-screen/quiz.jpeg";
+import messageScreenImage from "../../assets/mobile-screen/message.jpeg";
+import buyScreenImage from "../../assets/mobile-screen/Buy.jpeg";
 
 interface MasterclassesSectionProps {
   className?: string;
@@ -20,30 +24,35 @@ export const MasterclassesSection: React.FC<MasterclassesSectionProps> = ({
       title: "Home Feed",
       description:
         "Get your doubts solved through high-intent peer discussions and shared preparation strategies. Connect with thousands of aspirants who are on the same journey as you.",
+      image: homeFeedScreenImage,
     },
     {
       id: "02",
       title: "Post",
       description:
         "Don't just study-contribute. Start a thread, spark a debate, or share a shortcut that could help thousands.",
+      image: postScreenImage,
     },
     {
       id: "03",
       title: "Quiz",
       description:
         "Turn your weak spots into strengths. Engage with bite-sized quizzes designed to simulate the heat of the actual exam.",
+      image: quizScreenImage,
     },
     {
       id: "04",
       title: "Message | Direct Access",
       description:
         "No noise, just answers. Reach out to top-performers and peers instantly to keep your momentum going.",
+      image: messageScreenImage,
     },
     {
       id: "05",
       title: "Buy Trusted Resource",
       description:
         "Stop searching and start studying. Get instant access to the best-vetted resources the community has to offer.",
+      image: buyScreenImage,
     },
   ];
 
@@ -101,12 +110,12 @@ export const MasterclassesSection: React.FC<MasterclassesSectionProps> = ({
             </p>
 
             <div className="mt-5 flex justify-center">
-              <div className="relative h-[330px] w-[200px]">
+              <div className="relative h-[300px] w-[122px] overflow-hidden rounded-[24px] border-[4px] border-[#1f2026] shadow-[0_8px_20px_rgba(20,20,35,0.12)]">
                 <Image
-                  src={homeFeedImage}
-                  alt="Aspirant Adda home feed preview"
+                  src={navItems[activeItem]?.image ?? homeFeedScreenImage}
+                  alt={`${navItems[activeItem]?.title} screen`}
                   fill
-                  className="object-contain"
+                  className="object-cover object-center"
                   priority
                 />
               </div>
@@ -121,9 +130,12 @@ export const MasterclassesSection: React.FC<MasterclassesSectionProps> = ({
                 <div className="h-full">
                 <h2 className="text-[32px] font-semibold leading-none tracking-[-0.02em] text-[#111111] md:text-[40px]">
                   Aspirant Adda
+                  <br></br>
                 </h2>
                 <p className="mt-2 text-[18px] leading-none text-[#8f95a3] md:text-[22px]">
                   Clarify. Connect. Succeed.
+                  <br></br>
+                  <br></br>
                 </p>
 
                 <div className="relative mt-4">
@@ -173,12 +185,12 @@ export const MasterclassesSection: React.FC<MasterclassesSectionProps> = ({
                 </div>
 
                 <div className="flex h-full items-stretch justify-center md:justify-end">
-                  <div className="relative h-[430px] w-[260px] md:h-[560px] md:w-[340px]">
+                  <div className="relative h-[300px] w-[212px] overflow-hidden rounded-[28px] border-[6px] border-[#1f2026] shadow-[0_10px_24px_rgba(20,20,35,0.12)] md:h-[500px] md:w-[282px] md:rounded-[34px] md:border-[8px]">
                     <Image
-                      src={homeFeedImage}
-                      alt="Aspirant Adda home feed preview"
+                      src={navItems[activeItem]?.image ?? homeFeedScreenImage}
+                      alt={`${navItems[activeItem]?.title} screen`}
                       fill
-                      className="object-contain"
+                      className="object-cover object-center"
                       priority
                     />
                   </div>

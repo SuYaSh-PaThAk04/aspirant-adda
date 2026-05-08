@@ -60,14 +60,16 @@ export const ExpertMasterclassesSection: React.FC<ExpertMasterclassesSectionProp
                   onClick={() => setShowMentorScreen(true)}
                   className="mt-4 inline-flex h-9 items-center justify-center rounded-full border border-[#958eff] bg-white px-5 text-[18px] leading-none text-[#7a71f8]"
                 >
-                  Mentor Aspirants
+                  Become a Mentor
                 </button>
 
-                <div className="mt-6 grid grid-cols-2 gap-4">
-                  {Array.from({ length: 2 }).map((_, index) => {
-                    const mentor = mentors[(activeSlide + index) % mentors.length];
-                    return (
-                      <article key={`mobile-${mentor.name}-${index}`}>
+                <div className="mt-6 overflow-hidden">
+                  <div
+                    className="flex gap-4 transition-transform duration-500 ease-in-out"
+                    style={{ transform: `translateX(calc(${activeSlide} * -76%))` }}
+                  >
+                    {mentors.map((mentor, index) => (
+                      <article key={`mobile-${mentor.name}-${index}`} className="w-[72%] shrink-0">
                         <div className="relative h-[150px] w-full overflow-hidden rounded-[2px] bg-[#030b3b]">
                           <Image
                             src={mentor.image}
@@ -81,8 +83,8 @@ export const ExpertMasterclassesSection: React.FC<ExpertMasterclassesSectionProp
                           {mentor.name}
                         </p>
                       </article>
-                    );
-                  })}
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
@@ -108,7 +110,7 @@ export const ExpertMasterclassesSection: React.FC<ExpertMasterclassesSectionProp
                 onClick={() => setShowMentorScreen(true)}
                 className="inline-flex h-8 items-center justify-center rounded-full border border-[#958eff] bg-white px-3 text-[20px] leading-none text-[#7a71f8]"
               >
-                Mentor Aspirants
+                Become a Mentor
               </button>
             </div>
 
