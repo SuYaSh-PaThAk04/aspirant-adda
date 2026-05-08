@@ -55,9 +55,9 @@ export const FeaturesSection: React.FC<FeaturesSectionProps> = ({
               <Image
                 src={peerDoubtSolvingIcon}
                 alt=""
-                width={66}
-                height={36}
-                className="h-auto w-[66px] object-contain"
+                width={82}
+                height={64}
+                className="h-auto w-[160px] object-contain"
               />
             </div>
           </article>
@@ -76,24 +76,34 @@ export const FeaturesSection: React.FC<FeaturesSectionProps> = ({
               To Play Real-Time 1v1<br />
               Quiz Challenges.
             </p>
-            <div className="shrink-0">
-              <div className="relative h-[56px] w-[56px]">
-                <Image src={engagementIcon} alt="" fill className="object-contain" />
+            <div className="-mt-2 shrink-0">
+              <div className="relative h-[70px] w-[70px]">
+                <Image
+                  src={engagementIcon}
+                  alt=""
+                  fill
+                  className="scale-[1.6] object-contain"
+                />
               </div>
-              <div className="relative mt-2 h-[10px] w-[56px]">
-                <Image src={quizStartedWithPeer} alt="" fill className="object-contain" />
+              <div className="relative mt-1 h-[12px] w-[70px]">
+                <Image
+                  src={quizStartedWithPeer}
+                  alt=""
+                  fill
+                  className="scale-[1.15] object-contain"
+                />
               </div>
             </div>
           </div>
         </article>
 
         <article className="mt-3 grid grid-cols-[1.05fr_1fr] overflow-hidden rounded-[12px] bg-[#f3f3f3]">
-          <div className="relative min-h-[86px]">
+          <div className="relative min-h-[110px]">
             <Image
               src={featureTwoIllustration}
               alt="Peer network visualization"
               fill
-              className="object-contain object-left scale-[0.86]"
+              className="object-contain object-center scale-[1.08] rotate-90"
             />
           </div>
           <div className="px-3 py-3">

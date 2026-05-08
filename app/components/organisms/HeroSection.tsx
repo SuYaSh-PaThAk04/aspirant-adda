@@ -27,12 +27,14 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ className = "" }) => {
               <h3 className="text-[40px] font-semibold leading-none text-[#8b82ff]">
                 Aspirant Adda
               </h3>
-              <button
-                type="button"
+              <a
+                href="https://aspirantadda.onelink.me/qRG6/y03l264v"
+                target="_blank"
+                rel="noreferrer"
                 className="inline-flex h-9 items-center rounded-full border border-[#958eff] bg-white px-3.5 text-[16px] font-medium leading-none text-[#7a71f8]"
               >
                 Download App
-              </button>
+              </a>
             </div>
 
             <h1 className="mt-36 text-center text-[22px] font-semibold uppercase leading-[1] tracking-[-0.01em] text-white">
@@ -135,12 +137,14 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ className = "" }) => {
             Aspirant Adda
           </h3>
 
-          <button
-            type="button"
+          <a
+            href="https://aspirantadda.onelink.me/qRG6/y03l264v"
+            target="_blank"
+            rel="noreferrer"
             className="inline-flex h-8 items-center rounded-full border border-[#d0cbff] bg-white px-4 text-[15px] font-medium leading-none text-[#8b82ff] transition-colors hover:bg-[#f6f4ff] sm:h-9 sm:px-4 sm:text-[17px] lg:h-[36px] lg:px-5 lg:text-[19px]"
           >
             <span>Download App</span>
-          </button>
+          </a>
         </div>
 
         <div className="grid gap-5 lg:grid-cols-[1fr_0.9fr] lg:items-start">

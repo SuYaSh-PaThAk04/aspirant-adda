@@ -17,9 +17,9 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
   const [count, setCount] = React.useState(0);
   const [pinCodeCount, setPinCodeCount] = React.useState(0);
   const [activeStartIndex, setActiveStartIndex] = React.useState(0);
+  const [isMobileView, setIsMobileView] = React.useState(false);
   const [showExecutionPhone, setShowExecutionPhone] = React.useState(false);
   const proofSectionRef = React.useRef<HTMLDivElement | null>(null);
-  const visibleCards = 3;
 
   const testimonials = [
     {
@@ -53,6 +53,29 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
       rating: 5,
     },
   ];
+
+  React.useEffect(() => {
+    const mediaQuery = window.matchMedia("(max-width: 767px)");
+    const updateMobileState = () => setIsMobileView(mediaQuery.matches);
+    updateMobileState();
+    mediaQuery.addEventListener("change", updateMobileState);
+    return () => mediaQuery.removeEventListener("change", updateMobileState);
+  }, []);
+
+  const visibleCards = isMobileView ? 1 : 3;
+
+  React.useEffect(() => {
+    if (!isMobileView) return;
+    const timer = window.setInterval(() => {
+      setActiveStartIndex((prev) => (prev + 1) % testimonials.length);
+    }, 2500);
+    return () => window.clearInterval(timer);
+  }, [isMobileView, testimonials.length]);
+
+  React.useEffect(() => {
+    const maxStart = Math.max(0, testimonials.length - visibleCards);
+    setActiveStartIndex((prev) => Math.min(prev, maxStart));
+  }, [testimonials.length, visibleCards]);
 
   React.useEffect(() => {
     const target = 30000;
@@ -116,10 +139,12 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
   }, []);
 
   const handlePrevious = () => {
+    if (isMobileView) return;
     setActiveStartIndex((prev) => Math.max(0, prev - 1));
   };
 
   const handleNext = () => {
+    if (isMobileView) return;
     setActiveStartIndex((prev) =>
       Math.min(testimonials.length - visibleCards, prev + 1),
     );
@@ -129,13 +154,13 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
     <section className={`w-full bg-[#FFFFFF] px-4 pb-24 pt-10 sm:px-6 lg:px-8 ${className}`}>
       <div className="mx-auto w-full max-w-[1180px]">
         <div>
-          <h2 className="text-[30px] font-semibold leading-none tracking-[-0.02em] text-[#141414]">
+          <h2 className="text-[24px] font-semibold leading-none tracking-[-0.02em] text-[#141414] md:text-[30px]">
             Community Validated Success
           </h2>
-          <p className="mt-2 max-w-[760px] text-[15px] font-normal leading-[1.2] text-[#9a9ca5]">
+          <p className="mt-2 max-w-[760px] text-[13px] font-normal leading-[1.2] text-[#9a9ca5] md:text-[15px]">
           Join 30,000+ aspirants who will help you transition from fragmented study groups to a structured, high-intent preparation journey.
           </p>
-          <div className="mt-5 flex items-center gap-1">
+          <div className="mt-5 hidden items-center gap-1 md:flex">
             <button
               aria-label="Previous testimonials"
               onClick={handlePrevious}
@@ -160,8 +185,8 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
             >
               {testimonials.map((item, index) => (
                 <div key={`${item.name}-${index}`} className="w-full shrink-0 px-2 md:w-1/3">
-                  <article className="h-[265px] border border-[#8f8f8f] bg-transparent px-6 py-5 text-left">
-                    <p className="text-right text-[26px] font-medium italic leading-none text-[#2d2d32]">
+                  <article className="h-[230px] border border-[#8f8f8f] bg-transparent px-5 py-4 text-left md:h-[265px] md:px-6 md:py-5">
+                    <p className="text-right text-[22px] font-medium italic leading-none text-[#2d2d32] md:text-[26px]">
                       {item.name}
                     </p>
                     <div className="mt-3 flex justify-end">
@@ -178,7 +203,7 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
                         ))}
                       </div>
                     </div>
-                    <p className="mt-6 max-w-[310px] text-[17px] font-normal leading-[1.22] text-[#8f93a0]">
+                    <p className="mt-5 max-w-[310px] text-[14px] font-normal leading-[1.22] text-[#8f93a0] md:mt-6 md:text-[17px]">
                       {item.text}
                     </p>
                   </article>
