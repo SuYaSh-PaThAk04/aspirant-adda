@@ -44,8 +44,52 @@ export const ExpertMasterclassesSection: React.FC<ExpertMasterclassesSectionProp
     >
       <div className="mx-auto w-full max-w-[1180px]">
         <div className="relative">
+          {/* Mobile: main masterclasses view */}
+          {!showMentorScreen && (
+            <div className="lg:hidden">
+              <div className="px-2 py-2">
+                <h2 className="text-[26px] font-semibold leading-[1.05] text-[#0b0b12]">
+                  Expert Masterclasses
+                </h2>
+                <p className="mt-2 max-w-[520px] text-[14px] leading-[1.25] text-[#141523]">
+                  Live Masterclasses from Top Mentors To Bring More Clarity, Direction, And Confidence To Your Preparation Journey. 
+                </p>
+
+                <button
+                  type="button"
+                  onClick={() => setShowMentorScreen(true)}
+                  className="mt-4 inline-flex h-9 items-center justify-center rounded-full border border-[#958eff] bg-white px-5 text-[18px] leading-none text-[#7a71f8]"
+                >
+                  Mentor Aspirants
+                </button>
+
+                <div className="mt-6 grid grid-cols-2 gap-4">
+                  {Array.from({ length: 2 }).map((_, index) => {
+                    const mentor = mentors[(activeSlide + index) % mentors.length];
+                    return (
+                      <article key={`mobile-${mentor.name}-${index}`}>
+                        <div className="relative h-[150px] w-full overflow-hidden rounded-[2px] bg-[#030b3b]">
+                          <Image
+                            src={mentor.image}
+                            alt={mentor.name}
+                            fill
+                            className="object-cover"
+                            priority={index === 0}
+                          />
+                        </div>
+                        <p className="mt-3 text-[16px] leading-[1.05] text-[#141523]">
+                          {mentor.name}
+                        </p>
+                      </article>
+                    );
+                  })}
+                </div>
+              </div>
+            </div>
+          )}
+
           <div
-            className={`px-6 py-8 transition-opacity duration-300 md:px-8 ${
+            className={`hidden px-6 py-8 transition-opacity duration-300 md:px-8 lg:block ${
               showMentorScreen ? "opacity-0" : "opacity-100"
             }`}
           >

@@ -68,21 +68,36 @@ export const MasterclassesSection: React.FC<MasterclassesSectionProps> = ({
             </p>
 
             <div className="mt-4 border-b border-[#d8dbe2] pb-2">
-              <div className="flex items-center gap-4 text-[26px] font-semibold leading-none">
-                <span className="text-[#111111]">01</span>
-                <span className="text-[#111111]">Home Feed</span>
-                <span className="text-[#8f95a3]">02</span>
-                <span className="text-[#8f95a3]">02</span>
-                <span className="text-[#8f95a3]">02</span>
-                <span className="text-[#8f95a3]">02</span>
+              <div className="grid grid-cols-5 items-center gap-2">
+                {navItems.map((item, index) => {
+                  const isActive = activeItem === index;
+
+                  return (
+                    <button
+                      key={item.id}
+                      type="button"
+                      onClick={() => setActiveItem(index)}
+                      className={`flex items-center justify-center gap-2 whitespace-nowrap text-[13px] font-semibold leading-none transition-colors ${
+                        isActive ? "text-[#111111]" : "text-[#8f95a3]"
+                      }`}
+                    >
+                      <span>{item.id}</span>
+                      {isActive ? <span>{item.title}</span> : null}
+                    </button>
+                  );
+                })}
               </div>
-              <div className="mt-2 h-[2px] w-[116px] bg-[#7a71f8]" />
+
+              <div className="relative mt-2 h-[2px] w-full bg-transparent">
+                <div
+                  className="absolute left-0 top-0 h-full w-1/5 bg-[#7a71f8] transition-transform duration-500 ease-in-out"
+                  style={{ transform: `translateX(${activeItem * 100}%)` }}
+                />
+              </div>
             </div>
 
             <p className="mt-3 text-[11px] leading-[1.25] text-[#9aa0ad]">
-              Get Your Doubts Solved Through High-Intent Peer Discussions And
-              Shared Preparation Strategies. Connect With Thousands Of Aspirants
-              Who Are On The Same Journey As You.
+              {navItems[activeItem]?.description}
             </p>
 
             <div className="mt-5 flex justify-center">

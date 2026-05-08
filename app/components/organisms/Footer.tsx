@@ -23,7 +23,60 @@ export const Footer: React.FC<FooterProps> = ({ className = "" }) => {
     <footer
       className={`w-full bg-[linear-gradient(180deg,#FFFFFF_0%,#F4F0FF_10%,#D5CCFF_38%,#9D91FA_68%,#776CF2_100%)] text-black ${className}`}
     >
-      <div className="mx-auto w-full max-w-[1280px] px-6 pb-4 pt-16 md:px-14 md:pt-20">
+      {/* Mobile footer */}
+      <div className="mx-auto w-full max-w-[420px] px-6 pb-4 pt-16 lg:hidden">
+        <div className="flex flex-col items-center text-center">
+          <h3 className="text-[26px] font-medium leading-[1] tracking-[-0.02em] text-[#111111]">
+            Aspirant
+            <br />
+            Adda
+          </h3>
+
+          <div className="mt-4 flex items-center justify-center gap-4">
+            {socialLinks.map((social) => (
+              <a
+                key={social.alt}
+                href={social.href}
+                aria-label={social.alt}
+                className="opacity-95 transition-opacity hover:opacity-75"
+              >
+                <Image
+                  src={social.icon}
+                  alt={social.alt}
+                  width={16}
+                  height={16}
+                  className="h-4 w-4"
+                />
+              </a>
+            ))}
+          </div>
+
+          <ul className="mt-6 space-y-1 text-[14px] font-normal leading-6 text-[#111111]">
+            {quickLinks.map((link) => (
+              <li key={link}>
+                <a href="#" className="transition-opacity hover:opacity-75">
+                  {link}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div className="mt-12">
+          <h2 className="overflow-hidden text-center text-[72px] font-bold uppercase leading-none tracking-[0.01em] text-white/45">
+            Succeed
+          </h2>
+        </div>
+
+        <div className="mt-3 flex justify-center">
+          <p className="max-w-[320px] text-center text-[10px] leading-[1.25] text-white/70">
+            © 2026 Aspirant Adda | India
+          </p>
+        </div>
+      </div>
+
+      {/* Desktop footer (unchanged) */}
+      <div className="mx-auto hidden w-full max-w-[1280px] px-6 pb-4 pt-16 md:px-14 md:pt-20 lg:block">
         <div className="mb-8 grid grid-cols-1 gap-10 md:grid-cols-2 md:items-start">
           <div>
             <h3 className="text-4xl font-medium leading-[0.95] tracking-[-0.02em] md:text-[56px]">

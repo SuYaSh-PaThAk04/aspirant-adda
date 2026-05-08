@@ -52,9 +52,9 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ className = "" }) => {
 
         <div className="mx-auto max-w-[360px] px-4 pb-8">
           <p className="text-center text-[13px] leading-[1.2] text-[#9f9fa9]">
-            India&apos;s Dedicated Platform For Serious Aspirants To Connect With
-            Peers, Solve Doubts 1:1, And Master Daily Preparation Goals
-            Together.
+            India&apos;s First Social App For Competitive Exam Aspirants To Connect
+            1:1 With Peers, Mentors, and Find Trusted Resources To Make Smarter
+            Preparation & Financial Decisions
           </p>
 
           <div className="mt-6 flex justify-center">
@@ -62,7 +62,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ className = "" }) => {
               type="button"
               className="inline-flex h-10 items-center justify-center rounded-full border border-[#8f84ff] px-6 text-[31px] font-normal leading-none text-[#7a71f8]"
             >
-              Join Us
+              Join today!
             </button>
           </div>
 
@@ -70,10 +70,10 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ className = "" }) => {
             <div className="flex w-[100px] flex-col items-center text-center">
               <Image src={communityIcon} alt="" width={16} height={14} />
               <p className="mt-3 text-[35px] font-semibold leading-none text-[#111111]">
-                50k+
+                30k+
               </p>
               <p className="mt-2 text-[9px] leading-none text-[#9f9fa9]">
-                Active Users
+                Engaging Users
               </p>
             </div>
 
@@ -100,10 +100,10 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ className = "" }) => {
             <div className="flex w-[110px] flex-col items-center text-center">
               <Image src={discussionIcon} alt="" width={16} height={14} />
               <p className="mt-3 text-[35px] font-semibold leading-none text-[#111111]">
-                1000+
+                3000+
               </p>
               <p className="mt-2 text-[9px] leading-none text-[#9f9fa9]">
-                Daily Discussions
+                Daily Active Contributions
               </p>
             </div>
           </div>

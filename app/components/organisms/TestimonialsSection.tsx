@@ -220,7 +220,48 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
             <div className="pointer-events-none absolute -bottom-20 right-0 z-30 h-[180px] w-[58%] bg-gradient-to-t from-[#FFFFFF] via-[#FFFFFF]/98 to-transparent" />
           </div>
 
-          <div className="mt-8">
+          {/* Mobile CTA */}
+          <div className="mt-8 w-full sm:hidden">
+            <h3 className="text-[22px] font-medium leading-[1.05] tracking-[-0.01em] text-[#121212]">
+              Transform Your Prep Journey
+            </h3>
+            <p className="mx-auto mt-2 max-w-[320px] text-[12px] font-normal leading-[1.25] text-[#9d9da8]">
+              Join Thousands Of Serious Aspirants Who Use Aspirant Adda To Solve
+              Doubts, Track Progress, And Move Closer To Selection Every Single Day.
+            </p>
+
+            <div className="mt-5 flex flex-col items-center justify-center gap-3">
+              <a
+                href="#"
+                className="inline-flex h-9 w-[210px] items-center justify-center rounded-full border border-[#111111] px-5 text-[13px] font-medium leading-none text-[#121212]"
+              >
+                <Image
+                  src={appleLogo}
+                  alt="Apple logo"
+                  width={12}
+                  height={14}
+                  className="mr-2 h-[14px] w-[12px]"
+                />
+                Download On Apple
+              </a>
+              <a
+                href="#"
+                className="inline-flex h-9 w-[210px] items-center justify-center rounded-full bg-[#7A71F8] px-5 text-[13px] font-medium leading-none text-white"
+              >
+                <Image
+                  src={googlePlayLogo}
+                  alt="Google Play logo"
+                  width={12}
+                  height={12}
+                  className="mr-2 h-[12px] w-[12px]"
+                />
+                Download On Apple
+              </a>
+            </div>
+          </div>
+
+          {/* Desktop / tablet CTA (unchanged) */}
+          <div className="mt-8 hidden sm:block">
             <h3 className="whitespace-nowrap text-[46px] leading-[0.95] tracking-[-0.01em] text-[#121212]">
               Transform Your Prep Journey
             </h3>

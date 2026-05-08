@@ -25,26 +25,7 @@ export const WhySection: React.FC<WhySectionProps> = ({ className = "" }) => {
         "The Main Community Will Always Stay Open And Accessible To Every Serious Aspirant.",
     },
   ];
-  const mobileReasons = [
-    {
-      number: "01.",
-      title: "Peer-first",
-      description:
-        "A Network Of Verified High-Achievers. No Influencers, No Clout-Chasing, Just Collective Growth Through Shared Discipline.",
-    },
-    {
-      number: "02.",
-      title: "Ad-free forever",
-      description:
-        "Your Focus Is Sacred. We Prohibit All Coaching Ads And Commercial Interruptions That Distract From Deep-Work Sessions.",
-    },
-    {
-      number: "03.",
-      title: "Free at the core",
-      description:
-        "Access To The Main Community Is Always Open. Premium Features Are Entirely Opt-In For Those Seeking Deeper Analytical Tools.",
-    },
-  ];
+  const mobileReasons = reasons;
 
   return (
     <section className={`w-full bg-[#FFFFFF] ${className}`}>
@@ -54,8 +35,8 @@ export const WhySection: React.FC<WhySectionProps> = ({ className = "" }) => {
             Why Aspirant Adda?
           </h2>
           <p className="mx-auto mt-2 max-w-[360px] text-[12px] font-medium leading-[1.2] text-[#a3a3ac]">
-            Learn The High-Intent Strategies Used By Top Educators To Decode Complex Subjects
-            And Guarantee Selection.
+            Learn the High-Intent Strategies Used By Top Educators To Decode
+            Complex Subjects And Guarantee Selection.
           </p>
         </div>
 
