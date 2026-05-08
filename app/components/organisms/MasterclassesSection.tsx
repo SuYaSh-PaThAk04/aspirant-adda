@@ -57,73 +57,116 @@ export const MasterclassesSection: React.FC<MasterclassesSectionProps> = ({
 
   return (
     <>
-      <section className={`w-full bg-[#FFFFFF] px-4 pb-10 pt-5 sm:px-6 lg:px-8 ${className}`}>
-        <div className="mx-auto w-full max-w-[1180px]">
-          <div className="rounded-[18px] bg-[#ffffff] px-6 py-8 md:px-10 md:py-10">
-            <div className="grid grid-cols-1 items-stretch gap-6 md:grid-cols-2 md:gap-8">
-              <div className="h-full">
-              <h2 className="text-[32px] font-semibold leading-none tracking-[-0.02em] text-[#111111] md:text-[38px]">
-                Aspirant Adda
-              </h2>
-              <p className="mt-2 text-[16px] leading-none text-[#8f95a3] md:text-[24px]">
-                Clarify. Connect. Succeed.
-              </p>
+      <section className={`w-full bg-[#FFFFFF] ${className}`}>
+        <div className="mx-auto w-full max-w-[1180px] px-4 pb-8 pt-6 sm:px-6 lg:hidden">
+          <div className="rounded-[12px] bg-[#ffffff] px-3 py-3">
+            <h2 className="text-center text-[22px] font-semibold leading-none text-[#111111]">
+              Aspirant Adda
+            </h2>
+            <p className="mt-2 text-center text-[16px] leading-none text-[#111111]">
+              Clarify. Connect. Succeed.
+            </p>
 
-              <div className="relative mt-4">
-                {navItems.map((item, index) => {
-                  const isActive = activeItem === index;
+            <div className="mt-4 border-b border-[#d8dbe2] pb-2">
+              <div className="flex items-center gap-4 text-[26px] font-semibold leading-none">
+                <span className="text-[#111111]">01</span>
+                <span className="text-[#111111]">Home Feed</span>
+                <span className="text-[#8f95a3]">02</span>
+                <span className="text-[#8f95a3]">02</span>
+                <span className="text-[#8f95a3]">02</span>
+                <span className="text-[#8f95a3]">02</span>
+              </div>
+              <div className="mt-2 h-[2px] w-[116px] bg-[#7a71f8]" />
+            </div>
 
-                  return (
-                    <div key={item.id} className="border-b border-[#cfd2d8] py-1.5">
-                      <div
-                        className={`w-full text-left transition-colors duration-500 ${
-                          isActive ? "text-[#111111]" : "text-[#98a0ad]"
-                        }`}
-                      >
-                        <h3 className="text-[18px] font-semibold leading-none transition-all duration-500 md:text-[38px]">
-                          {item.id} {item.title}
-                        </h3>
-                      </div>
+            <p className="mt-3 text-[11px] leading-[1.25] text-[#9aa0ad]">
+              Get Your Doubts Solved Through High-Intent Peer Discussions And
+              Shared Preparation Strategies. Connect With Thousands Of Aspirants
+              Who Are On The Same Journey As You.
+            </p>
 
-                      {isActive && (
-                        <div className="mt-1 flex max-w-[620px] items-start gap-2 overflow-hidden pl-1">
-                          <div
-                            key={`pointer-${activeItem}`}
-                            className="mt-0.5 h-[48px] w-[7px] shrink-0 overflow-hidden md:h-[56px] md:w-[8px]"
-                          >
-                            <div
-                              className="h-full w-full origin-top animate-[pointerReveal_2.5s_linear_forwards]"
-                              style={{ transform: "scaleY(0)" }}
-                            >
-                              <Image
-                                src={homePointerImage}
-                                alt={`${item.title} pointer`}
-                                width={9}
-                                height={86}
-                                className="h-full w-full object-contain"
-                              />
-                            </div>
-                          </div>
-                          <p className="text-[12px] leading-[1.15] text-[#9aa0ad] transition-all duration-500 md:text-[16px]">
-                            {item.description}
-                          </p>
+            <div className="mt-5 flex justify-center">
+              <div className="relative h-[330px] w-[200px]">
+                <Image
+                  src={homeFeedImage}
+                  alt="Aspirant Adda home feed preview"
+                  fill
+                  className="object-contain"
+                  priority
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="hidden px-4 pb-10 pt-5 sm:px-6 lg:block lg:px-8">
+          <div className="mx-auto w-full max-w-[1180px]">
+            <div className="rounded-[18px] bg-[#ffffff] px-6 py-8 md:px-10 md:py-10">
+              <div className="grid grid-cols-1 items-stretch gap-6 md:grid-cols-2 md:gap-8">
+                <div className="h-full">
+                <h2 className="text-[32px] font-semibold leading-none tracking-[-0.02em] text-[#111111] md:text-[40px]">
+                  Aspirant Adda
+                </h2>
+                <p className="mt-2 text-[18px] leading-none text-[#8f95a3] md:text-[22px]">
+                  Clarify. Connect. Succeed.
+                </p>
+
+                <div className="relative mt-4">
+                  {navItems.map((item, index) => {
+                    const isActive = activeItem === index;
+
+                    return (
+                      <div key={item.id} className="border-b border-[#cfd2d8] py-1.5">
+                        <div
+                          className={`w-full text-left transition-colors duration-500 ${
+                            isActive ? "text-[#111111]" : "text-[#98a0ad]"
+                          }`}
+                        >
+                          <h3 className="text-[12px] font-semibold leading-none transition-all duration-500 md:text-[30px]">
+                            {item.id} {item.title}
+                          </h3>
                         </div>
-                      )}
-                    </div>
-                  );
-                })}
-              </div>
-              </div>
 
-              <div className="flex h-full items-stretch justify-center md:justify-end">
-                <div className="relative h-[430px] w-[260px] md:h-[560px] md:w-[340px]">
-                  <Image
-                    src={homeFeedImage}
-                    alt="Aspirant Adda home feed preview"
-                    fill
-                    className="object-contain"
-                    priority
-                  />
+                        {isActive && (
+                          <div className="mt-1 flex max-w-[620px] items-start gap-2 overflow-hidden pl-1">
+                            <div
+                              key={`pointer-${activeItem}`}
+                              className="mt-0.5 h-[48px] w-[7px] shrink-0 overflow-hidden md:h-[56px] md:w-[8px]"
+                            >
+                              <div
+                                className="h-full w-full origin-top animate-[pointerReveal_2.5s_linear_forwards]"
+                                style={{ transform: "scaleY(0)" }}
+                              >
+                                <Image
+                                  src={homePointerImage}
+                                  alt={`${item.title} pointer`}
+                                  width={9}
+                                  height={86}
+                                  className="h-full w-full object-contain"
+                                />
+                              </div>
+                            </div>
+                            <p className="text-[13px] leading-[1.15] text-[#9aa0ad] transition-all duration-500 md:text-[17px]">
+                              {item.description}
+                            </p>
+                          </div>
+                        )}
+                      </div>
+                    );
+                  })}
+                </div>
+                </div>
+
+                <div className="flex h-full items-stretch justify-center md:justify-end">
+                  <div className="relative h-[430px] w-[260px] md:h-[560px] md:w-[340px]">
+                    <Image
+                      src={homeFeedImage}
+                      alt="Aspirant Adda home feed preview"
+                      fill
+                      className="object-contain"
+                      priority
+                    />
+                  </div>
                 </div>
               </div>
             </div>

@@ -3,6 +3,12 @@
 import React from "react";
 import Image from "next/image";
 import addMentorIllustration from "../../assets/AddMentor.svg";
+import atishMathurImage from "../../assets/masterclass/Atish-mathur.jpg";
+import parveenKaswanImage from "../../assets/masterclass/Parveen_Kaswan.jpg";
+import shAshokKumarImage from "../../assets/masterclass/sh_ashok_kumR.jpg";
+import shekharDattImage from "../../assets/masterclass/shekhar_datt.jpg";
+import shubhraMamImage from "../../assets/masterclass/Shubhra-mam.jpg";
+import tanyaSinghImage from "../../assets/masterclass/Tanya_Singh.jpg";
 
 interface ExpertMasterclassesSectionProps {
   className?: string;
@@ -12,14 +18,34 @@ export const ExpertMasterclassesSection: React.FC<ExpertMasterclassesSectionProp
   className = "",
 }) => {
   const [showMentorScreen, setShowMentorScreen] = React.useState(false);
-  const mentors = ["Mr. Roy Clien", "Mr. Roy Clien", "Mr. Roy Clien"];
+  const [activeSlide, setActiveSlide] = React.useState(0);
+  const mentors = [
+    { name: "Atish Mathur", image: atishMathurImage },
+    { name: "Parveen Kaswan", image: parveenKaswanImage },
+    { name: "Sh Ashok Kumar", image: shAshokKumarImage },
+    { name: "Shekhar Datt", image: shekharDattImage },
+    { name: "Shubhra Mam", image: shubhraMamImage },
+    { name: "Tanya Singh", image: tanyaSinghImage },
+  ];
+
+  React.useEffect(() => {
+    if (showMentorScreen) return;
+    const timer = window.setInterval(() => {
+      setActiveSlide((prev) => (prev + 1) % mentors.length);
+    }, 2500);
+    return () => window.clearInterval(timer);
+  }, [showMentorScreen, mentors.length]);
 
   return (
-    <section className={`w-full px-4 py-10 sm:px-6 lg:px-8 ${className}`}>
+    <section
+      className={`w-full px-4 py-10 sm:px-6 lg:px-8 ${
+        showMentorScreen ? "bg-[#ffffff]" : "bg-[#b7b0f2]"
+      } ${className}`}
+    >
       <div className="mx-auto w-full max-w-[1180px]">
         <div className="relative">
           <div
-            className={`rounded-[18px] bg-[#b7b0f2] px-6 py-8 transition-opacity duration-300 md:px-8 ${
+            className={`px-6 py-8 transition-opacity duration-300 md:px-8 ${
               showMentorScreen ? "opacity-0" : "opacity-100"
             }`}
           >
@@ -29,8 +55,7 @@ export const ExpertMasterclassesSection: React.FC<ExpertMasterclassesSectionProp
                   Expert Masterclasses
                 </h2>
                 <p className="mt-3 max-w-[740px] text-[20px] leading-[1.12] text-[#141523]">
-                  Master Complex Subjects With Exclusive Strategies From Top
-                  Educators Designed To Guarantee Your Selection.
+                Live Masterclasses from Top Mentors To Bring More Clarity, Direction, And Confidence To Your Preparation Journey. 
                 </p>
               </div>
 
@@ -39,22 +64,32 @@ export const ExpertMasterclassesSection: React.FC<ExpertMasterclassesSectionProp
                 onClick={() => setShowMentorScreen(true)}
                 className="inline-flex h-8 items-center justify-center rounded-full border border-[#958eff] bg-white px-3 text-[20px] leading-none text-[#7a71f8]"
               >
-                Become mentor
+                Mentor Aspirants
               </button>
             </div>
 
             <div className="grid grid-cols-1 gap-5 md:grid-cols-3">
-              {mentors.map((mentor, index) => (
-                <article key={`${mentor}-${index}`}>
-                  <div className="h-[290px] w-full bg-[#030b3b]" />
-                  <p className="mt-4 text-[20px] leading-none text-[#141523]">{mentor}</p>
+              {Array.from({ length: 3 }).map((_, index) => {
+                const mentor = mentors[(activeSlide + index) % mentors.length];
+                return (
+                <article key={`${mentor.name}-${index}`}>
+                  <div className="relative h-[290px] w-full overflow-hidden bg-[#030b3b]">
+                    <Image
+                      src={mentor.image}
+                      alt={mentor.name}
+                      fill
+                      className="object-cover transition-opacity duration-500"
+                    />
+                  </div>
+                  <p className="mt-4 text-[20px] leading-none text-[#141523]">{mentor.name}</p>
                 </article>
-              ))}
+                );
+              })}
             </div>
           </div>
 
           <div
-            className={`absolute inset-0 rounded-[18px] bg-[#f3f3f3] px-6 py-8 transition-all duration-500 md:px-8 ${
+            className={`absolute inset-0 bg-[#ffffff] px-6 py-8 transition-all duration-500 md:px-8 ${
               showMentorScreen
                 ? "translate-y-0 opacity-100"
                 : "pointer-events-none translate-y-6 opacity-0"

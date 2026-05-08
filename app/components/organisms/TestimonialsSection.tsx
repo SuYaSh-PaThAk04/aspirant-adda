@@ -15,6 +15,7 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
   className = "",
 }) => {
   const [count, setCount] = React.useState(0);
+  const [pinCodeCount, setPinCodeCount] = React.useState(0);
   const [activeStartIndex, setActiveStartIndex] = React.useState(0);
   const [showExecutionPhone, setShowExecutionPhone] = React.useState(false);
   const proofSectionRef = React.useRef<HTMLDivElement | null>(null);
@@ -54,7 +55,7 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
   ];
 
   React.useEffect(() => {
-    const target = 50000;
+    const target = 30000;
     const durationMs = 1500;
     const intervalMs = 16;
     const steps = Math.ceil(durationMs / intervalMs);
@@ -69,6 +70,27 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
         return;
       }
       setCount(Math.floor(current));
+    }, intervalMs);
+
+    return () => window.clearInterval(timer);
+  }, []);
+
+  React.useEffect(() => {
+    const target = 3000;
+    const durationMs = 1500;
+    const intervalMs = 16;
+    const steps = Math.ceil(durationMs / intervalMs);
+    const increment = target / steps;
+    let current = 0;
+
+    const timer = window.setInterval(() => {
+      current += increment;
+      if (current >= target) {
+        setPinCodeCount(target);
+        window.clearInterval(timer);
+        return;
+      }
+      setPinCodeCount(Math.floor(current));
     }, intervalMs);
 
     return () => window.clearInterval(timer);
@@ -111,8 +133,7 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
             Community Validated Success
           </h2>
           <p className="mt-2 max-w-[760px] text-[15px] font-normal leading-[1.2] text-[#9a9ca5]">
-            Join 50,000 + serious aspirants who have transitioned from fragmented<br></br>
-            study groups to a structured, high-intent preparation journey.
+          Join 30,000+ aspirants who will help you transition from fragmented study groups to a structured, high-intent preparation journey.
           </p>
           <div className="mt-5 flex items-center gap-1">
             <button
@@ -172,11 +193,14 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
           className="mx-auto mt-16 flex w-full max-w-[760px] flex-col items-center text-center"
         >
           <p className="text-[44px] font-medium leading-none text-[#1d1d1f]">
-            Proof Of Execution
+          Aspirant Love 
           </p>
           <h2 className="mt-1 text-[72px] font-semibold leading-none tracking-[0.01em] text-[#7A71F8]">
-            {count.toLocaleString("en-IN")} +
+            {count.toLocaleString("en-IN")}+
           </h2>
+          <p className="mt-2 text-[24px] font-medium leading-none text-[#7A71F8]">
+            from {pinCodeCount.toLocaleString("en-IN")}+ Pin Codes
+          </p>
 
           <div
             className={`relative mt-5 h-[380px] w-[360px] overflow-hidden transition-all duration-700 ease-out ${

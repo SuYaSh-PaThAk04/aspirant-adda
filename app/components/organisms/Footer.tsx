@@ -71,8 +71,7 @@ export const Footer: React.FC<FooterProps> = ({ className = "" }) => {
 
         <div className="mt-1 flex justify-center">
           <p className="text-center text-sm text-white/65 md:text-base">
-            © 2025 Aspirant Adda | New Delhi, India | Owned By Mentortalk Aspirations
-            Private Limited
+            © 2026 Aspirant Adda | India
           </p>
         </div>
       </div>
